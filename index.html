@@ -78,7 +78,7 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         
-        let player = { x: 50, y: 500, width: 50, height: 50, speed: 5, velocityY: 0, gravity: 0.8, jumpStrength: 15, onGround: true, jumpCooldown: false };
+        let player = { x: 50, y: 500, width: 40, height: 40, speed: 5, velocityY: 0, gravity: 0.8, jumpStrength: 15, onGround: true, jumpCooldown: false };
         let platforms = [];
         let obstacles = [];
         let goal = { x: 700, y: 50, width: 50, height: 50, color: '#2ecc71' }; // Cor do objetivo
@@ -99,25 +99,25 @@
                 platforms = [
                     { x: 0, y: 550, width: 800, height: 50 },  // Base
                     { x: 100, y: 400, width: 150, height: 20 },  // Plataforma 1
-                    { x: 300, y: 300, width: 100, height: 20 },  // Plataforma 2
-                    { x: 500, y: 200, width: 150, height: 20 }   // Plataforma 3
+                    { x: 320, y: 300, width: 150, height: 20 },  // Plataforma 2
+                    { x: 550, y: 200, width: 150, height: 20 }   // Plataforma 3
                 ];
                 obstacles = [
-                    { x: 400, y: 525, width: 50, height: 25 }, // Obstáculo 1
+                    { x: 350, y: 280, width: 50, height: 20 }, // Obstáculo 1
                 ];
-                goal = { x: 700, y: 150, width: 50, height: 50 };
+                goal = { x: 700, y: 150, width: 50, height: 50, color: '#2ecc71' };
             } else if (phase === 2) {
                 platforms = [
                     { x: 0, y: 550, width: 800, height: 50 },  // Base
                     { x: 150, y: 450, width: 150, height: 20 },  // Plataforma 1
                     { x: 350, y: 350, width: 100, height: 20 },  // Plataforma 2
-                    { x: 550, y: 250, width: 200, height: 20 }   // Plataforma 3
+                    { x: 500, y: 250, width: 200, height: 20 }   // Plataforma 3
                 ];
                 obstacles = [
-                    { x: 250, y: 525, width: 50, height: 25 },  // Obstáculo 1
-                    { x: 450, y: 325, width: 50, height: 25 },  // Obstáculo 2
+                    { x: 250, y: 400, width: 50, height: 70 },  // Obstáculo 1
+                    { x: 425, y: 300, width: 50, height: 70 },  // Obstáculo 2
                 ];
-                goal = { x: 700, y: 150, width: 50, height: 50 };
+                goal = { x: 700, y: 150, width: 50, height: 50, color: '#2ecc71' };
             } else if (phase === 3) {
                 platforms = [
                     { x: 0, y: 550, width: 800, height: 50 },  // Base
@@ -127,12 +127,51 @@
                     { x: 650, y: 150, width: 100, height: 20 }   // Plataforma 4
                 ];
                 obstacles = [
-                    { x: 300, y: 325, width: 50, height: 25 },  // Obstáculo 1
-                    { x: 550, y: 225, width: 50, height: 25 },  // Obstáculo 2
+                    { x: 300, y: 325, width: 100, height: 25 },  // Obstáculo 1
+                    { x: 550, y: 190, width: 50, height: 60 },  // Obstáculo 2
                 ];
-                goal = { x: 700, y: 100, width: 50, height: 50 };
-            }
+                goal = { x: 700, y: 100, width: 50, height: 50, color: '#2ecc71'};
+            } if (phase === 4) {
+                platforms = [
+                    { x: 0, y: 550, width: 800, height: 50 },  // Base
+                    { x: 200, y: 460, width: 50, height: 20 },  // Plataforma 1
+                    { x: 0, y: 330, width: 100, height: 20 },  // Plataforma 2
+                    { x: 130, y: 210, width: 150, height: 20 },  // Plataforma 3
+                    { x: 370, y: 300, width: 30, height: 20 }, 
+                    { x: 520, y: 260, width: 140, height: 20 },
+                    { x: 750, y: 150, width: 30, height: 20 }
+                ];
+                obstacles = [
+                     { x: 173, y: 190, width: 50, height: 20 },
+                     {x: 100, y: 400, width: 70, height: 50},
+                     { x: 555, y: 215, width: 50, height: 45 }
+                ];
+                goal = { x: 700, y: 0, width: 50, height: 50, color: '#2ecc71' };
         }
+        if (phase === 5) {
+                platforms = [
+                    { x: 0, y: 550, width: 800, height: 50 },  // Base
+                    { x: 10, y: 460, width: 50, height: 20 },  // Plataforma 1
+                    { x: 80, y: 380, width: 80, height: 20 },  // Plataforma 2
+                    { x: 280, y: 380, width: 30, height: 20 }, 
+                    { x: 400, y: 320, width: 140, height: 20 },
+                    { x: 580, y: 226, width: 80, height: 20 },
+                    { x: 400, y: 90, width: 80, height: 20 },
+                    { x: 550, y: 40, width: 25, height: 20 },
+                    { x: 650, y: 60, width: 25, height: 20 },
+                    { x: 550, y: 40, width: 25, height: 20 }
+                ];
+                obstacles = [
+                     { x: 330, y: 370, width: 30, height: 30 },
+                     {x: 700, y: 120, width: 40, height: 430}, // goal obstaculo
+                     {x: 200, y: 300, width: 40, height: 250}, 
+                     { x: 440, y: 275, width: 50, height: 45 },
+                     { x: 550, y: 250, width: 50, height: 100 },
+                    
+                ];
+                goal = { x: 760, y: 520, width: 30, height: 30, color: '#2ecc71' };
+        }
+    }
 
         setupPhase(currentPhase);
 
