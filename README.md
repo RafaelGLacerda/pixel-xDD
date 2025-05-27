@@ -4,7 +4,7 @@ Um jogo 2D de plataforma estilo **pixel art**, desenvolvido com **HTML**, **CSS*
 
 ---
 
-https://rafaelglacerda.github.io/pixel-xDD/
+[**PixelXDD**](https://rafaelglacerda.github.io/pixel-xDD/)
 
 ---
 
